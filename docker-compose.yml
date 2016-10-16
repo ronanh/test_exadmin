@@ -1,0 +1,15 @@
+db:
+  image: postgres:9.5.3
+
+dev:
+  image: docker-dev
+  volumes:
+   - .:/code/test_exadmin
+   - ~/.ssh/id_rsa.pub:/root/id_rsa.pub
+  links:
+   - db
+  environment:
+   AUTHORIZED_GIT_USERS: ronanh
+  ports:
+   - "0.0.0.0:2222:22"
+   - "0.0.0.0:4000:4000"
